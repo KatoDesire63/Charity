@@ -1,0 +1,69 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+.nav-link {
+  position: relative;
+  padding-bottom: 6px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #ef4444;
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover { color: #f87171; }
+.nav-link:hover::after { width: 100%; }
+.nav-link.active { color: #f87171; }
+.nav-link.active::after { width: 100%; }
+
+/* container */
+.perspective {
+  perspective: 1000px;
+}
+
+/* inner flip wrapper */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  transform-style: preserve-3d;
+  transition: transform 0.7s;
+}
+
+/* flip on hover */
+.group:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* front & back */
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 0.5rem;
+}
+
+/* back side */
+.flip-card-back {
+  transform: rotateY(180deg);
+}
+
+.flip-card-inner {
+  height: 300px; /* increase if needed */
+}
